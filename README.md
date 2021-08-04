@@ -1,4 +1,2 @@
-# study_deeplearning
-
-what I've learnt about Machine learning and deep learning!
+딥러닝 STUDY
 
