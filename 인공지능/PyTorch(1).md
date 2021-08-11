@@ -1,1 +1,1 @@
-### PyTorch tutorial from Deep Lizard
+### Study from Deep lizard - lecture: Neural Network Programming - Deep Learning with PyTorch
