@@ -32,4 +32,37 @@ The number of tasks that a larger task can be broken into depends on the number 
 
 We can conclude that parallel computing is done using GPUs, and we can also conclude that tasks which are best suited to be solved using a GPU are tasks that can be done in parallel, we can accelerate our computation using parallel programming approaches and GPUs. 
 
+### Neural Networks Are Embarrassingly Parallel 
+
+Many of the computations that we do with neural networks can be easily broken into smaller computations in such a way that the set of smaller computations do not depend on one another. One such example is a convolution.
+
+### Pytorch comes with CUDA
+
+One of the benefits of using PyTorch, or any other neural network API is that parallelism comes baked into the API. This means that as neural network programmers, we can focus more on building neural networks and less on performance issuses.
+
+### Using CUDA with PyTorch
+
+If we want a particual computation to be performed on the GPU, we can instruct PyTorch to do so by calling 'cuda()' on our data structures (tensors)
+
+suppose we have the following code:
+   * t = torch.tensor([1,2,3])
+
+The tensor object created in this way is on the CPU by default.
+As a result, any operations that we do using this tensor object will be carried out on the CPU.
+
+Now, to move the tensor onto the GPU, we just write:
+
+  * t = t.cuda()
+  * t
+  tensor([1,2,3], device = 'cuda: 0')
+
+This ability makes PyTorch very versatile because computations can be selectively carried out either on the CPU or on the GPU.
+
+### GPGPU Computing 
+
+Deep learning along with many other scientific computing tasks that use parallel programming techniques are leading to a new type of programming model called GPGPU or general purpose GPU computing.
+
+GPGPU computing is more commonly just called GPU computing or accelerated computing now that it's becoming more common to perform a wide variety of tasks on a GPU. 
+
+
 
