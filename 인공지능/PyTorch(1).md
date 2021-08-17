@@ -54,6 +54,7 @@ Now, to move the tensor onto the GPU, we just write:
 
   * t = t.cuda()
   * t
+  
   tensor([1,2,3], device = 'cuda: 0')
 
 This ability makes PyTorch very versatile because computations can be selectively carried out either on the CPU or on the GPU.
