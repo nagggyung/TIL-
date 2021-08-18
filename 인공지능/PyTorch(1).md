@@ -65,5 +65,43 @@ Deep learning along with many other scientific computing tasks that use parallel
 
 GPGPU computing is more commonly just called GPU computing or accelerated computing now that it's becoming more common to perform a wide variety of tasks on a GPU. 
 
+### Chap5. Tensors Explained - Data Structures Of Deep Learning
+
+### What is a Tensor?
+
+The inputs, outputs, and transformations within neural networks are all represented using tensors, and as a result, neural network programming utilizes tensors heavily.
+
+* A Tensor is the primary data structure used by neural networks.
+
+### Specific instances of Tensors
+
+Each of these examples are specific instances of the more general concept of a Tensor:
+* number
+* scalar
+* array
+* vector
+* 2d-array
+* matrix
+
+In Deep Learning, we usually just refer to all these as tensors.
+
+### Indexes Required To Access An Element
+
+The relationship within each of these pairs is that both elements require the same number of indexes to refer to a specific element within the data structure.
+ 
+![image](https://user-images.githubusercontent.com/74478432/129898971-674415c1-00ed-4104-b5d7-76f6bf41cf9d.png)
+
+### Tensors are generalizations
+
+Tensors are multidimensional arrays or nd-arrays for short. The reason we say a tensor is a generalization is because we use the word tensor for all values of n like so:
+
+* A scalar is a 0 dimensional tensor
+* A vector is a 1 dimensional tensor
+* A matrix is a 2 dimensional tensor
+* A nd-array is an n dimensional tensor
+
+
+
+
 
 
