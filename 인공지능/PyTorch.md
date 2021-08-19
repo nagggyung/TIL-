@@ -100,8 +100,45 @@ Tensors are multidimensional arrays or nd-arrays for short. The reason we say a 
 * A matrix is a 2 dimensional tensor
 * A nd-array is an n dimensional tensor
 
+### Chap6. Rank, Axes, And Shape Explained - Tensors For Deep Learning
 
+### Rank of a Tensor
 
+The Rank of a tensor refers to the number of dimensions present within the tensor.
+Suppose we are told that we have a rank-2 tensor. This means all of the following:
 
+* We have a matrix 
+* We have a 2d-array
+* We have a 2d-tensor
 
+### Rank and indexes
 
+A tensor's rank tells us how many indexes are needed to access a specific element within the tensor.
+
+### Axes of a Tensor
+
+An axis of a tensor is a specific dimension of a tensor. If we say that a tensor is a rank-2 tensor, we mean that the tensor has 2 dimensions, or equivalently, the tensor has two axes.
+
+### Length of An Axis
+
+The length of each axis tells us how many indexes are available along each axis.
+
+### Shape of a Tensor
+
+The shape of a tensor is determined by the length of each axis, so if we know the shape of a given tensor, then we know the length of each axis, and this tells us how many indexes are available along each axis.
+
+The shape of a tensor gives us the length of each axis of the tensor:
+
+You can get the shape of a tensor by writing 't.shape'. In PyTorch, size and shape of a tensor are the same thing.
+
+### Reshaping a Tensor
+
+![2021-08-19 (13)](https://user-images.githubusercontent.com/74478432/130089193-c05d542d-b1ed-4dd2-93b7-221cfc1a05a9.png)
+
+![2021-08-19 (12)](https://user-images.githubusercontent.com/74478432/130089206-b1958b85-4145-4a1e-9ff5-fd58e865907e.png)
+
+Now, one thing to notice about reshaping is that the product of the component values in the shape must equal the total number of elements in the tensor.
+
+For example, 
+* 3 x 3 = 9
+* 1 x 9 = 9
