@@ -142,3 +142,8 @@ Now, one thing to notice about reshaping is that the product of the component va
 For example, 
 * 3 x 3 = 9
 * 1 x 9 = 9
+
+
+### Chap 7. CNN Tensor shape Explained - Convolutional Neural Networks And Feature Maps
+
+### Convolutional Neural Network 
