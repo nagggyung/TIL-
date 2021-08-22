@@ -144,6 +144,6 @@ For example,
 * 1 x 9 = 9
 
 
-### Chap 7. CNN Tensor shape Explained - Convolutional Neural Networks And Feature Maps
+### Chap 7. CNN Tensor Shape Explained - Convolutional Neural Networks And Feature Maps
 
 ### Convolutional Neural Network 
