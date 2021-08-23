@@ -147,3 +147,26 @@ For example,
 ### Chap 7. CNN Tensor Shape Explained - Convolutional Neural Networks And Feature Maps
 
 ### Convolutional Neural Network 
+
+What I want to do now is put the concepts of rank, axes, and shape to use with a practical example. To do this, we'll consider an image input as a tensor to a CNN.
+Remember that the shape of a tensor encodes all the relevant information about a tensor's axes, rank, and indexes, so we'll consider the shape in our example.
+
+### Shape of CNN Input
+
+The shape of a CNN input typically has a length of four. This means that we have a rank-4 tensor with four axes. Each index in the tensor's shape represents a specific axis, and the value at each index gives us the length of the corresponding axis.
+
+* (A,B,C,D) : rank-4 tensor = 4 axes
+
+For images, the raw data comes in the form of pixels that are represented by a number and are laid out using two dimensions, height and width.
+
+### Image data in tensor
+
+* (Batch, Channels, Height, Width)
+
+### Feature Maps
+
+Feature maps are the output channels created from the convolutions. 
+
+The word "feature" is used because the outputs represent particular features from the image, like edges for example, and these mappings emerge as the network learns during the training process and become more complex as we move deeper into the network.
+
+
