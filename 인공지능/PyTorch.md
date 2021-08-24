@@ -169,4 +169,34 @@ Feature maps are the output channels created from the convolutions.
 
 The word "feature" is used because the outputs represent particular features from the image, like edges for example, and these mappings emerge as the network learns during the training process and become more complex as we move deeper into the network.
 
+### Chap8. PyTorch Tensors Explained - Neural Network Programming
+### Introducing PyTorch Tensors
+PyTorch tensors are the data structures we'll be using when programming neural networks in PyTorch. When programming neural networks, data preprocessing is often one of the first steps in the overall process, and one goal of data preprocessing is to transform the raw input data into tensor form.
+
+### Instances of the torch.Tensor class
+
+PyTorch tensors are instances of the torch.Tensor Python class. We can create torch.Tensor object using the class constructor like so:
+![2021-08-24 (12)](https://user-images.githubusercontent.com/74478432/130637066-28d73c91-8f64-4753-a6b2-d017b0034164.png)
+
+This creates an empty tensor(tensor with no data).
+
+### Tensor Attributes 
+Every torch.Tensor has these attribute values:
+* torch.dtype
+* torch.device
+* torch.layout
+
+### PyTorch Tensor Type Promotion
+Arithmetic and comparison operations, as of PyTorch version 1.3, can perform mixed-type operations that promote to a common dtype. The example below was not allowed in version 1.2. However, in version 1.3 and above, the same code returns  tensor with dtype = torch.float32
+
+![2021-08-24 (13)](https://user-images.githubusercontent.com/74478432/130638353-15f6bb7b-4209-4885-b165-c7c56275505f.png)
+
+### Tensors Have A torch.device
+The device, CPU in our case, specifies the device(CPU or GPU) where the tensor's data is allocated. This determines where tensor computations for the given tensor will be performed. PyTorch supports the use of multiple devices, and they are specified using an index like so:
+
+![2021-08-24 (16)](https://user-images.githubusercontent.com/74478432/130639027-638aa5b2-7aea-4ee7-8e8d-e3afba5cce2d.png)
+
+
+One thing to keep in mind about using multiple devices is that tensor operations between tensors must happen between tensors that exist on the same device. 
+
 
