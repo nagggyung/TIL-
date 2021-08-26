@@ -199,5 +199,5 @@ The device, CPU in our case, specifies the device(CPU or GPU) where the tensor's
 
 One thing to keep in mind about using multiple devices is that tensor operations between tensors must happen between tensors that exist on the same device. 
 
-### Tensors Have a torch.layout
+### Tensors Have A torch.layout
 The layout, strided in our case, specifies how the tensor is stored in memory 
