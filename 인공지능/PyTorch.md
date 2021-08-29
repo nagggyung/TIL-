@@ -40,7 +40,7 @@ Many of the computations that we do with neural networks can be easily broken in
 
 One of the benefits of using PyTorch, or any other neural network API is that parallelism comes baked into the API. This means that as neural network programmers, we can focus more on building neural networks and less on performance issuses.
 
-### Using CUDA with PyTorch
+### Using CUDA With PyTorch
 
 If we want a particual computation to be performed on the GPU, we can instruct PyTorch to do so by calling 'cuda()' on our data structures (tensors)
 
