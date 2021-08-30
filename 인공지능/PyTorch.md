@@ -201,3 +201,28 @@ One thing to keep in mind about using multiple devices is that tensor operations
 
 ### Tensors Have A torch.layout
 The layout, strided in our case, specifies how the tensor is stored in memory 
+
+### Take Away From The Tensor Attributes 
+As neural network programmers, we need to be aware of the followings:
+* Tensors contain data of a uniform type (dtype)
+* Tensor computations between tensors depend on the dtype and the device
+
+### Creating Tensors Using Data
+These are the primary ways of creating tensor objects (instances of the torch.Tensor class), with data(array-like) inb PyTorch.
+
+* torch.Tensor(data)
+* torch.tensor(data)
+* torch.as_tensor(data)
+* torch.from_numpy(data)
+
+![2021-08-30](https://user-images.githubusercontent.com/74478432/131357314-36d2a59c-db6d-407b-a642-c88138db4850.png)
+
+All the options (o1, o2, o3, o4) appears to have produced the same tensors except for the first one. The first option (oi1) has dots after the number indicating that the numbers are floats, while the next three options have a type of int32.
+
+
+### Creating Options Without Data
+* torch.eye(): returns a 2-D tensor with ones on the diagonal and zeros elsewhere.
+* torch.zeros(): creates a tensor of zeros with the shape of specified shape argument.
+* torch.ones(): creates a tensor of ones.
+* torch.rand(): creates a tensor with a shape of the specified argument whose values are random.
+
