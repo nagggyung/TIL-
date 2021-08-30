@@ -217,7 +217,7 @@ These are the primary ways of creating tensor objects (instances of the torch.Te
 
 ![2021-08-30](https://user-images.githubusercontent.com/74478432/131357314-36d2a59c-db6d-407b-a642-c88138db4850.png)
 
-All the options (o1, o2, o3, o4) appears to have produced the same tensors except for the first one. The first option (oi1) has dots after the number indicating that the numbers are floats, while the next three options have a type of int32.
+All the options (o1, o2, o3, o4) appears to have produced the same tensors except for the first one. The first option (o1) has dots after the number indicating that the numbers are floats, while the next three options have a type of int32.
 
 
 ### Creating Options Without Data
