@@ -112,4 +112,43 @@ class Solution:
           return words.most_common(1)[0][0]
 ```
 
+### 교재 Solution(1) 리스트 컴프리헨션, Counter 객체 사용:
 
+```c
+class Solution:
+  def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:
+      words = [word for word in re.sub(r'[^\w]',' ', paragraph).lower().split() if word not in banned]
+      # 정규식에서 '\w'는 단어 문자(word character)을 뜻하며, ^은 not을 의미한다. 
+      # 따라서 위의 정규식은 단어 문자가 아닌 모든 문자를 공백으로 치환하는 역할을 한다.
+      
+      counts = collections.Counter(words)
+      return counts.most_common(1)[0][0]
+```
+
+### 문5) 그룹 애너그램(리트코드 49. Group Anagrams)
+애너그램이란, 일종의 언어 유희로서 문자를 재 배열하여 다른 뜻을 가진 단어로 바꾸는 것을 말한다.
+
+###  sort vs sorted:
+(1) sort(): 리스트 정렬/none 리턴<br>
+(2) sorted():<br> 
+- 리스트, 문자열, 튜플, 딕셔너리 등 반복가능한 자료형 모두 가능
+- 기존 리스트를 복사해서 새로 만들어 반환(기존 리스트에는 영향을 주지 않는다)
+- 리스트로 결과를 리턴
+
+### 교재 Solution(1) 정렬하여 딕셔너리에 추가
+
+```c
+class Solution:
+    def groupAnagrams(self, strs:List[str]) -> List[List[str]]:
+        anagrams = collections.defaultdict(list) # 해당 키에 대한 기본 값을 비어있는 리스트로 세팅
+        
+        for word in strs:
+            # 정렬하여 딕셔너리에 추가
+            anagrams[''.join(sorted(word))].append(word)
+        return list(anagrams.values())
+```
+
+애너그램을 판단하는 가장 간단한 방법은 정렬하여 비교하는 것이다. 애너그램 관계인 단어들을 정렬하면, 서로 같은 값을 갖게 된다. <br>
+sorted()는 문자열도 잘 정렬하여 결과를 리스트 형태로 리턴하는데, 이를 다시 키로 사용하기 위해 join()으로 합쳐 이 값을 키로 하는 딕셔너리로 구현한다. <br>
+애너그램 끼리는 같은 키를 갖게되고 따라서 여기에 append()하는 형태가 된다. <br>
+이 처럼 정렬한 값을 키로 하여 딕셔너리에 추가한다. 만약 존재하지 않는 키를 삽입하려 할 경우 KeyError가 발생하므로, 에러가 나지 않도록 defaultdict()로 선언하며, 매번 키 존재 여를 체크하지 않고 비교구문을 생략해 간결하게 구성한다. 
