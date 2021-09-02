@@ -151,3 +151,41 @@ class Solution:
 애너그램을 판단하는 가장 간단한 방법은 정렬하여 비교하는 것이다. 애너그램 관계인 단어들을 정렬하면, 서로 같은 값을 갖게 된다. <br>
 sorted()는 문자열도 잘 정렬하여 결과를 리스트 형태로 리턴하는데, 이를 다시 키로 사용하기 위해 join()으로 합쳐 이 값을 키로 하는 딕셔너리로 구현한다. 
 애너그램 끼리는 같은 키를 갖게되고 따라서 여기에 append()하는 형태가 된다. 이 처럼 정렬한 값을 키로 하여 딕셔너리에 추가한다. 만약 존재하지 않는 키를 삽입하려 할 경우 KeyError가 발생하므로, 에러가 나지 않도록 defaultdict()로 선언하며, 매번 키 존재 여부를 체크하지 않고 비교구문을 생략해 간결하게 구성한다. 
+
+
+### 문6) 가장 긴 팰린드롬 부분 문자열 (리트코드 5. Longest Palindrome Substring)
+
+### My solution : Time limit 떴으므로 코드 수정 필요하다. 
+```c
+class Solution:
+    def longestPalindrome(self, s:str) -> str:
+        strs = []
+        for i in range(len(s)):
+            for j in range(i+1, len(s)+1):
+                if s[i:j][:] == s[i:j][::-1]:
+                    strs.append(s[i:j])
+        strs = sorted(strs, key=len)
+        return strs[len(strs)-1]
+```
+
+### 교재 Solution(1) 중앙을 중심으로 확장하는 풀이: 
+
+```c
+class Solution:
+    def longestPalindrome(self, s:str) -> str:
+        def expand(left:int, right:int) -> str:
+            while left>=0 and right<len(s) and s[left] == s[right]:
+                  left -= 1
+                  right += 1
+            return s[left+1:right]
+        
+        if len(s)<2 or s == s[::-1]:
+           return s
+        
+        result = ''
+        for i in range(len(s)-1):
+            result = max(result, expand(i,i+1), expand(i, i+2), key=len)
+        
+        return result 
+    
+```
