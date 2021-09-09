@@ -14,4 +14,4 @@ img_t = tf(img_t)
 print(img_t) # <PIL.Image.Image image mode=RGB size=1080x1440 at 0x1F825089A00>
 
 img_t.show()
-#
+
