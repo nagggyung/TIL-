@@ -202,7 +202,7 @@ mn = sys.maxsize<br>
 
 float()을 이용해 다음과 같이 무한대 값을 지정하는 방법이 있다.<br>
 mx = float('-inf')<br>
-mx = float('inf')<br>
+mn = float('inf')<br>
 
 
 
