@@ -151,8 +151,58 @@ class Solution:
 
 
 
+### 문11) 자신을 제외한 배열의 곱(리트코드 238. Product of Array Except Self)
+
+### 풀이) 
+
+```c
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        res = []
+        pref = 1
+        for i in range(len(nums)):
+            res.append(pref)
+            pref = pref*nums[i]
+        post = 1
+        for i in range(len(nums)-1, -1, -1):
+            res[i] = post*res[i]
+            post = post*nums[i]
+        return res
+```
 
 
+### 문12) 주식을 사고 팔기 가장 좋은 시점(리트코드 121. Best Time to Buy and Sell Stock)
+
+### 풀이)
+
+```c
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        profit = 0
+        min_price = sys.maxsize
+        
+        # 최솟값과 최댓값을 계속 갱신 
+        for price in prices:
+            min_price = min(min_price, price)
+            profit = max(profit, price - min_price)
+        return profit
+        return sum[sorted(nums)[::2]]
+```
+
+* 현재 값이 우측으로 이동하면서 저점과 차이 계산.
+* 현재 값을 가리키는 포인터가 우측으로 이동하면서 이전 상태의 저점을 기준으로 가격 차이를 계산하고, 만약 클 경우 최댓 값을 계속 교체해 나가는 형태로 풀이.
+
+
+### 최댓값과 최솟값
+최댓값에는 가장 낮은 값을 초깃 값으로 해야 어떤 값이든 최댓값이 교체될 수 있고, 반대로 최솟 값에는 가장 높은 값을 초깃 값으로 해야 어떤 값이든 최솟값이 바로 교체될 수 있다. 
+앞서 문제풀이에는 다음과 같이 sys를 활용했다. 이 모듈을 사용하면 시스템이 지정할 수 있는 가장 높은 값, 낮은 값을 활용할 수 있다.
+
+mx = -sys.maxsize<br>
+mn = sys.maxsize<br>
+
+float()을 이용해 다음과 같이 무한대 값을 지정하는 방법이 있다.<br>
+mx = float('-inf')<br>
+mx = float('inf')<br>
 
 
 
