@@ -25,9 +25,9 @@ that makes it all possible)
 - The computer that accesses a server
 
 ## How it works ?
-(1) Request! - Client: "Google.com/search?Q=CHICKENS"
-(2) Response ! - Server: it responds back with HTML, CSS, and Javascript codes
-(3) Browser: The browser takes that and turns it into this web page(display to render contents for me)
+- Request! - Client: "Google.com/search?Q=CHICKENS"
+- Response ! - Server: it responds back with HTML, CSS, and Javascript codes
+- Browser: The browser takes that and turns it into this web page(display to render contents for me)
 
 ### Frontend vs Backend
 - Frontend: The part of a website that the user interacts with directly is termed the front end. 
