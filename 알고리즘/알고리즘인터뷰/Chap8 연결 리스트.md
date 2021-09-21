@@ -98,4 +98,24 @@ class Solution:
 ```
 
 
+### 문15) 역순 연결 리스트(206. Reverse Linked List)
+
+### Solution)
+
+
+```c
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        node, prev = head, None
+        
+        while node:
+            next, node.next = node.next, prev
+            prev, node = node, next
+        
+        return prev
+        
+```
+* node.next 를 prev 리스트로 계속 연결하면서 끝날 때 까지 반복
+* node 가 None이 될 때, prev는 뒤집힌 연결 리스트의 첫 번째 노드가 된다. 
+
 
