@@ -212,3 +212,82 @@ class Solution:
 - functools.reduce(function, iterable) 함수는 function을 iterable의 요소에 차례로(왼쪽에서 오른쪽으로) 누적 적용하여 iterable을 단일 값으로 줄여나가는 함수이다
 - lambda 인자: 표현식 
 
+
+### 문18) 홀짝 연결 리스트(리트코드 328. Odd Even Linked List)
+
+### Solution)
+
+```c
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        # 예외 처리
+        if head is None:
+            return None
+        odd = head
+        even = head.next
+        even_head = head.next
+        
+        # 반복 하면서 홀짝 노드 처리
+        while even and even.next:
+            odd.next, even.next = odd.next.next, even.next.next
+            odd, even = odd.next, even.next
+        
+        # 홀수 노드의 마지막을 짝수 헤드로 연결
+        odd.next = even_head
+        return head            
+        
+```
+
+* 연결 리스트를 홀수 노드 다음에 짝수 노드가 오도록 재구성 하라.
+* 즉, 홀수 노드와 짝수 노드를 각각 연결 후 홀수 노드의 마지막을 짝수 노드의 헤드로 연결하면 된다.
+
+
+### 문19) 역순 연결 리스트 ii (리트코드 92. Reverse Linked List II)
+
+### Solution 반복 구조로 노드 뒤집기)
+
+```c
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
+        
+        # 예외처리
+        if not head or left == right:
+            return head
+        
+        root = start = ListNode(None)
+        root.next = head
+        
+        # start, end 지정
+        for _ in range(left-1):
+            start = start.next 
+        end = start.next 
+        
+        # 반복하면서 노드 차례로 뒤집기
+        
+        for _ in range(right-left):
+            tmp = start.next
+            start.next = end.next 
+            end.next = end.next.next
+            start.next.next = tmp 
+        return root.next
+            
+```
+
+* start는 변경이 필요한 2의 바로 앞 지점인 1을 가리키게 하고, end는 start.next 인 2로 지정
+* head 는 1, root는 head 보다 이전에 위치 시켜서 나중에 root.next를 최종 결과로 리턴
+* 할당된 start, end는 끝까지 값이 변하지 않는다.
+* start.next를 tmp로 지정
+* start.next는 end.next 가 된다
+* end.next 는 end.next.next로 한 칸 더 앞의 값을 끌어 온다
+* start.next.next를 tmp로 지정한다. 즉, start.next였던 노드를 배치하는 것과 동일하다.
+
