@@ -118,4 +118,94 @@ class Solution:
 * node.next 를 prev 리스트로 계속 연결하면서 끝날 때 까지 반복
 * node 가 None이 될 때, prev는 뒤집힌 연결 리스트의 첫 번째 노드가 된다. 
 
+### 문16) 두 수의 덧셈
+
+### Solution (1) 자료형 반환)
+
+```c
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+   
+        
+    # 연결 리스트 뒤집기
+    def reversedList(self, head:ListNode) -> List:
+        node, prev = head, None
+        
+        while node:
+            next, node.next = node.next, prev
+            prev, node = node, next
+        return prev
+    
+    # 연결 리스트를 파이썬 리스트로 변환
+    def toList(self, node:ListNode) -> List:
+        list:List = []
+        while node:
+            list.append(node.val)
+            node = node.next
+        return list
+    
+    # 파이썬 리스트의 연결리스트로의 변환
+    def toReversedLinkedList(self, result: str)->ListNode:
+        prev: ListNode = None
+        for r in result:
+            node = ListNode(r)
+            node.next = prev
+            prev = node
+        return node
+    
+    # 두 연결 리스트의 덧셈
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode)->ListNode:
+        a = self.toList(self.reversedList(l1))
+        b = self.toList(self.reversedList(l2))
+        
+        resultStr = int(''.join(str(e) for e in a)) + int(''.join(str(e) for e in b))
+        # 최종 결과 연결 리스트 변환
+        return self.toReversedLinkedList(str(resultStr))
+        
+```
+
+
+### Solution (2) 전가산기 구현)
+
+
+```c
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+        root = head = ListNode(0)
+        
+        carry = 0
+        while l1 or l2 or carry:
+            sum = 0
+            # 두 입력 값의 합 계산
+            if l1:
+                sum += l1.val
+                l1 = l1.next
+            if l2:
+                sum += l2.val
+                l2 = l2.next
+            
+            # 몫(자리올림수)과 나머지(값) 계산
+            carry, val = divmod(sum+carry, 10)
+            head.next = ListNode(val)
+            head = head.next
+        
+        return root.next
+        
+```
+
+* 입력 값 A와 B, 이전의 자리 올림수(carry in) 이렇게 3가지 입력으로 합(sum)과 다음 자리 올림수(carry out) 여부를 결정
+* 연산 결과로 나머지(Remainder)를 취하고 몫(Quotient)은 자리올림수 형태로 올린다.
+* carry, val = divmod(sum + carry, 10): divmod()는 파이썬 내장 함수로, 몫과 나머지로 구성된 튜플을 리턴한다. 
+* divmod(a,b) = (a // b, a % b)
+
+
 
