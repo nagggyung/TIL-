@@ -207,5 +207,8 @@ class Solution:
 * carry, val = divmod(sum + carry, 10): divmod()는 파이썬 내장 함수로, 몫과 나머지로 구성된 튜플을 리턴한다. 
 * divmod(a,b) = (a // b, a % b)
 
+### 참고
 
+- functools.reduce(function, iterable) 함수는 function을 iterable의 요소에 차례로(왼쪽에서 오른쪽으로) 누적 적용하여 iterable을 단일 값으로 줄여나가는 함수이다
+- lambda 인자: 표현식 
 
