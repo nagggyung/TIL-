@@ -118,7 +118,7 @@ class Solution:
 * node.next 를 prev 리스트로 계속 연결하면서 끝날 때 까지 반복
 * node 가 None이 될 때, prev는 뒤집힌 연결 리스트의 첫 번째 노드가 된다. 
 
-### 문16) 두 수의 덧셈
+### 문16) 두 수의 덧셈(리트코드 2. Add Two Numbers)
 
 ### Solution (1) 자료형 반환)
 
