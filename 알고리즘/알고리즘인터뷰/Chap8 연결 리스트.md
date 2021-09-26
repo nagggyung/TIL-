@@ -289,5 +289,5 @@ class Solution:
 * start.next를 tmp로 지정
 * start.next는 end.next 가 된다
 * end.next 는 end.next.next로 한 칸 더 앞의 값을 끌어 온다
-* start.next.next를 tmp로 지정한다. 즉, start.next였던 노드를 배치하는 것과 동일하다.
+* start.next.next를 tmp로 지정한다. 즉, start.next였던 노드를 배치하는 것과 동일함.
 
