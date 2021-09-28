@@ -1,4 +1,4 @@
-### Linked List 
+## Linked List
 
 - Link 이용해서 List 만듦
 - Node로 이루어져 있다.
@@ -72,6 +72,197 @@ def printNodesRecur(node:ListNode):
 ```
 
 ![image](https://user-images.githubusercontent.com/74478432/135081528-340e27ec-c3ca-46ce-a5df-a5c507018370.png)
+
+
+### Linked List: 노드 들을 묶어서 전체적인 Class 만들기
+Class:
+- add at head
+- add at Back/After
+- FindeNode
+- DeleteAfter
+
+**class 생성/printNodes code**
+
+```c
+class ListNode:
+  def __init__(self, val):
+    self.val = val
+    self.next = None
+
+def printNodes(node:ListNode):
+  crn_node = node
+  while crn_node is not None:
+    print(crn_node.val, end = ' ')
+    crn_node = crn_node.next
+```
+
+
+1) AddAtHead(self, val):
+
+- AddAtHead(1)
+![2021-09-29](https://user-images.githubusercontent.com/74478432/135129885-707c96f5-3a01-401d-a245-26cf3210a3da.png)
+
+- AddAtHead(2)
+![2021-09-29 (1)](https://user-images.githubusercontent.com/74478432/135130097-92c93951-0912-4d68-9e42-c59ff2765283.png)
+
+- code: 
+```c
+# value 와 next가 들어있는 node를 이용해서 그들 list class를 만들어 보자
+
+class SLinkedList:
+  def __init__(self):
+    self.head = None
+  
+  def addAtHead(self, val):  # O(1)
+    node = ListNode(val)
+    node.next = self.head
+    self.head = node
+    
+```
+
+2) addBack(self, val):
+- addBack(3)
+![2021-09-29 (2)](https://user-images.githubusercontent.com/74478432/135130674-2f2bdaf2-855e-4de4-89e1-bd79b904ef1d.png)
+
+- code:
+```c
+class SLinkedList:
+  def __init__(self):
+    self.head = None
+  
+  def addAtHead(self, val):  # O(1)
+    node = ListNode(val)
+    node.next = self.head
+    self.head = node
+  
+  # edge case 고려 x
+  def addBack(self, val): # O(n)
+    node = ListNode(val)
+    crn_node = self.head
+    while crn_node.next is not None:
+      crn_node = crn_node.next
+    crn_node.next = node 
+    
+```
+
+3) findNode(self, val):
+- findNode(1)
+![2021-09-29 (4)](https://user-images.githubusercontent.com/74478432/135130952-ffb162ba-c8f8-446d-a571-41b2d8f3ebb1.png)
+
+- code:
+```c
+class SLinkedList:
+  def __init__(self):
+    self.head = None
+  
+  def addAtHead(self, val):  # O(1)
+    node = ListNode(val)
+    node.next = self.head
+    self.head = node
+  
+  # edge case 고려 x
+  def addBack(self, val): # O(n)
+    node = ListNode(val)
+    crn_node = self.head
+    while crn_node.next is not None:
+      crn_node = crn_node.next
+    crn_node.next = node 
+  
+  def findNode(self, val): # O(n)
+    crn_node = self.head
+    while crn_node is not None:
+      if crn_node.val == val:
+        return crn_node
+      crn_node = crn_node.next
+    raise RuntimeError('Node not found')
+    # 예외를 일으키고 싶으면 raise 문을 사용!
+    
+```
+
+4) addAfter(node1, val):
+- addAfter(node1, 4)
+![2021-09-29 (5)](https://user-images.githubusercontent.com/74478432/135131334-b8803d69-2492-4d16-b68b-ad3d871979f4.png)
+
+- code:
+```c
+class SLinkedList:
+  def __init__(self):
+    self.head = None
+  
+  def addAtHead(self, val):  # O(1)
+    node = ListNode(val)
+    node.next = self.head
+    self.head = node
+  
+  # edge case 고려 x
+  def addBack(self, val): # O(n)
+    node = ListNode(val)
+    crn_node = self.head
+    while crn_node.next is not None:
+      crn_node = crn_node.next
+    crn_node.next = node 
+  
+  def findNode(self, val): # O(n)
+    crn_node = self.head
+    while crn_node is not None:
+      if crn_node.val == val:
+        return crn_node
+      crn_node = crn_node.next
+    raise RuntimeError('Node not found')
+  
+  def addAfter(self, node, val): # prev node가 함께 넘어오기 때문에, O(1)
+    new_node = ListNode(val)
+    new_node.next = node.next
+    node.next = new_node
+    
+```
+
+5) deleteAfter(self, prev_node) 
+- deleteAfter(node1)
+![2021-09-29 (6)](https://user-images.githubusercontent.com/74478432/135131663-bf712053-644a-40ee-8e2d-7f28d2a0d3f2.png)
+
+- code:
+```c
+class SLinkedList:
+  def __init__(self):
+    self.head = None
+  
+  def addAtHead(self, val):  # O(1)
+    node = ListNode(val)
+    node.next = self.head
+    self.head = node
+  
+  # edge case 고려 x
+  def addBack(self, val): # O(n)
+    node = ListNode(val)
+    crn_node = self.head
+    while crn_node.next is not None:
+      crn_node = crn_node.next
+    crn_node.next = node 
+  
+  def findNode(self, val): # O(n)
+    crn_node = self.head
+    while crn_node is not None:
+      if crn_node.val == val:
+        return crn_node
+      crn_node = crn_node.next
+    raise RuntimeError('Node not found')
+  
+  def addAfter(self, node, val): # prev node가 함께 넘어오기 때문에, O(1)
+    new_node = ListNode(val)
+    new_node.next = node.next
+    node.next = new_node
+
+  def deleteAfter(self, prev_node): # prev node가 함께 넘어오기 때문에, O(1)
+    if prev_node.next is not None:
+      prev_node.next = prev_node.next.next
+    
+```
+
+6) result:
+
+![2021-09-29 (7)](https://user-images.githubusercontent.com/74478432/135131803-b5f907b6-9ebf-4950-8666-335745cc1aea.png)
+
 
 
 
