@@ -390,5 +390,87 @@ class ElementRemover:
 ![image](https://user-images.githubusercontent.com/74478432/135206011-f19332d1-e5dd-4cc8-b471-f66da51877d5.png)
 
 
+### Merge Two Sorted List
+- 문제 : 주어진 두개의 정렬된 LinkedList를 정렬이 된 상태로 합쳐라
+  - L1 : 1→3→5→7
+  - L2 : 1→2→3→4
+  - L1+L2 : 1→1→2→3→3→4→5→7
+![image](https://user-images.githubusercontent.com/74478432/135207139-3c829545-a688-4a3e-82b0-0b58106967db.png)
+
+- code:
+```c
+from typing import List
+
+class ListNode:
+  def __init__(self, x):
+    self.val = x
+    self.next = None
+
+def createList(in_list:List[int]) -> ListNode:
+  if len(in_list) == 0:
+    raise RuntimeError("in_list must have data")        
+  head_node = ListNode(in_list[0])
+  last_node = head_node
+  for idx in range(1,len(in_list)):
+    node = ListNode(in_list[idx])
+    last_node.next = node
+    last_node = node
+  return head_node
+
+def printNodes(node:ListNode):
+  crnt_node = node
+  while crnt_node is not None:
+    print(crnt_node.val, end=' ')
+    crnt_node = crnt_node.next
+  print()
+```
+
+```c
+class MergeTwoLists:
+  def iterativeWay(self, l1: ListNode, l2: ListNode) -> ListNode:
+    dummy_node = ListNode(0)
+    crnt_node = dummy_node
+    
+    node1 = l1
+    node2 = l2
+    
+    while node1 and node2:
+      val1 = node1.val
+      val2 = node2.val      
+      if val1<=val2:
+        crnt_node.next = node1
+        node1 = node1.next
+        crnt_node = crnt_node.next
+      else:
+        crnt_node.next = node2
+        node2 = node2.next
+        crnt_node = crnt_node.next
+    
+    if node1:
+      crnt_node.next = node1
+    else:
+      crnt_node.next = node2
+        
+    return dummy_node.next
+
+  def recursiveWay(self, l1: ListNode, l2: ListNode) -> ListNode:
+    #exit conditions
+    if l1 is None:
+      return l2
+    elif l2 is None:
+      return l1    
+    
+    if l1.val <= l2.val:
+      l1.next = self.recursiveWay(l1.next,l2)
+      return l1
+    else:
+      l2.next = self.recursiveWay(l1,l2.next)
+      return l2      
+    
+```
+
+- result: 
+![image](https://user-images.githubusercontent.com/74478432/135207488-7195b000-b852-4590-a87f-f9ac71fbbcf3.png)
+
 
 
