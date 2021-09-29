@@ -395,6 +395,8 @@ class ElementRemover:
   - L1 : 1→3→5→7
   - L2 : 1→2→3→4
   - L1+L2 : 1→1→2→3→3→4→5→7
+
+
 ![image](https://user-images.githubusercontent.com/74478432/135207139-3c829545-a688-4a3e-82b0-0b58106967db.png)
 
 - code:
