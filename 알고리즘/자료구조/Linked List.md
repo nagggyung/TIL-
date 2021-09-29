@@ -472,6 +472,8 @@ class MergeTwoLists:
 ```
 
 - result: 
+
+
 ![image](https://user-images.githubusercontent.com/74478432/135207488-7195b000-b852-4590-a87f-f9ac71fbbcf3.png)
 
 
