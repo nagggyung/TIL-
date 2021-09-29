@@ -219,6 +219,7 @@ class SLinkedList:
 
 5) deleteAfter(self, prev_node) 
 - deleteAfter(node1)
+
 ![2021-09-29 (6)](https://user-images.githubusercontent.com/74478432/135131663-bf712053-644a-40ee-8e2d-7f28d2a0d3f2.png)
 
 - code:
