@@ -264,6 +264,130 @@ class SLinkedList:
 ![2021-09-29 (7)](https://user-images.githubusercontent.com/74478432/135131803-b5f907b6-9ebf-4950-8666-335745cc1aea.png)
 
 
+### Remove Linked List Elements
+![image](https://user-images.githubusercontent.com/74478432/135205148-b568f3eb-a6cb-4184-86bf-19e6ebd2a55e.png)
+
+- DeleteAfter()의 edge case: head가 1엣 시작하는 것이 아니라 3에서 시작한다면, head node의 3을 remove할 방법이 없다.
+
+### Solution:
+### 1) Recursive 한 방법으로 삭제 
+
+- code:
+
+```c
+  #arg_node data is not kept
+  def recursive(self, node: ListNode) -> ListNode:
+    if not node:
+      return None
+    next_node = self.recursive(node.next)
+    if node.val == self.__val:
+      return next_node
+    else:
+      node.next = next_node
+      return node
+```
+
+### 2) Iterative 한 방법으로 삭제: dummy node를 만들고 시작하자! 
+![image](https://user-images.githubusercontent.com/74478432/135205605-b8b1efbc-2f88-4a68-9699-9b95ee21eb40.png)
+
+- 시작하자마자 dummy node를 맨 앞에 만든다
+- dummy node가 가리키는 것을 head node로 설정
+- dummy node를 prev node로 다음 node인 head node를 crnt(current) node로 설정
+- 이를 iterative 한 방법으로 process 진행 시 crnt node가 3을 만날 때 마다, prev의 다음 node를 재 설정만 해주면 된다.
+- crnt node는 리스트의 끝을 만나게 되면서 모든 함수가 종료된다
+- 남은 리스트의 시작점을 return 해야 함. **dummy.next를 return** 해준다.
+- dummy node 생성시간: O(1) + Crnt 노드와 prev 노드 이동 & 필요 없는 노드 삭제: O(n) + dummy 노드 지워주고 새로은 Linked list의 시작점을 Pointing 하는데 걸리는 시간: O(1) = O(n)
+
+- code:
+```c
+  #arg_node data is not kept
+  def iterative(self, node: ListNode) -> ListNode:    
+    dummy_node = ListNode(0)
+    dummy_node.next = head
+    
+    crnt_node = head
+    prev_node = dummy_node
+    while crnt_node:
+      if crnt_node.val == self.__val:
+        prev_node.next = crnt_node.next
+        crnt_node = crnt_node.next
+      else:
+        crnt_node = crnt_node.next
+        prev_node = prev_node.next
+    return dummy_node.next
+```
+
+
+### 3) 전체 code:
+
+
+```c
+from typing import List
+
+class ListNode:
+  def __init__(self, x):
+    self.val = x
+    self.next = None
+
+def createList(in_list:List[int]) -> ListNode:
+  if len(in_list) == 0:
+    raise RuntimeError("in_list must have data")        
+  head_node = ListNode(in_list[0])
+  last_node = head_node
+  for idx in range(1,len(in_list)):
+    node = ListNode(in_list[idx])
+    last_node.next = node
+    last_node = node
+  return head_node
+
+def printNodes(node:ListNode):
+  crnt_node = node
+  while crnt_node is not None:
+    print(crnt_node.val, end=' ')
+    crnt_node = crnt_node.next
+  print()
+```
+
+
+```c
+class ElementRemover:
+  def __init__(self,val):
+    self.__val = val
+
+  #arg_node data is not kept
+  def recursive(self, node: ListNode) -> ListNode:
+    if not node:
+      return None
+    next_node = self.recursive(node.next)
+    if node.val == self.__val:
+      return next_node
+    else:
+      node.next = next_node
+      return node
+  
+  #arg_node data is not kept
+  def iterative(self, node: ListNode) -> ListNode:    
+    dummy_node = ListNode(0)
+    dummy_node.next = head
+    
+    crnt_node = head
+    prev_node = dummy_node
+    while crnt_node:
+      if crnt_node.val == self.__val:
+        prev_node.next = crnt_node.next
+        crnt_node = crnt_node.next
+      else:
+        crnt_node = crnt_node.next
+        prev_node = prev_node.next
+    return dummy_node.next
+```
+
+
+
+- result: 
+
+![image](https://user-images.githubusercontent.com/74478432/135206011-f19332d1-e5dd-4cc8-b471-f66da51877d5.png)
+
 
 
 
