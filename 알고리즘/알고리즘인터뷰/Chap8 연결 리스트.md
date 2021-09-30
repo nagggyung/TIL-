@@ -212,6 +212,41 @@ class Solution:
 - functools.reduce(function, iterable) 함수는 function을 iterable의 요소에 차례로(왼쪽에서 오른쪽으로) 누적 적용하여 iterable을 단일 값으로 줄여나가는 함수이다
 - lambda 인자: 표현식 
 
+### 문17) 페어의 노드 스왑(리트코드 24. Swap Nodes in Pairs)
+
+### Solution (2) 반복 구조로 스왑
+
+```c
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        root = prev = ListNode(None)
+        prev.next = head
+        
+        while head and head.next:
+            # b가 a(head)를 가리키도록 할당
+            b= head.next
+            head.next = b.next
+            b.next = head
+            
+            # prev가 b를 가리키도록 할당
+            prev.next = b
+            
+            # 다음번 비교를 위해 이동
+            head = head.next
+            prev = prev.next.next
+        return root.next
+        
+```
+
+
+
+
+
 
 ### 문18) 홀짝 연결 리스트(리트코드 328. Odd Even Linked List)
 
