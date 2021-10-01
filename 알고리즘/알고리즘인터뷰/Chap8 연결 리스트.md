@@ -284,7 +284,7 @@ class Solution:
 
 ### 문19) 역순 연결 리스트 ii (리트코드 92. Reverse Linked List II)
 
-### Solution 반복 구조로 노드 뒤집기)
+### Solution (1) 반복 구조로 노드 뒤집기)
 
 ```c
 # Definition for singly-linked list.
@@ -326,3 +326,40 @@ class Solution:
 * end.next 는 end.next.next로 한 칸 더 앞의 값을 끌어 온다
 * start.next.next를 tmp로 지정한다. 즉, start.next였던 노드를 배치하는 것과 동일함.
 
+### Solution (2) )
+```c
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
+        
+        # 예외처리
+        if not head or left == right:
+            return head
+        
+        dummy = ListNode(0, next=head)
+        prev = dummy
+        
+        i= 1
+        while i < left:
+            prev = prev.next
+            i += 1
+        cur = prev.next
+        nx = cur.next
+        
+        while i < right:
+            tmp = nx.next
+            nx.next = cur
+            cur = nx
+            nx = tmp
+            i += 1
+        
+        prev.next.next = nx
+        prev.next = cur
+        
+        return dummy.next 
+            
+```
