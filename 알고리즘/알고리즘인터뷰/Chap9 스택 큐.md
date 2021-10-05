@@ -1,1 +1,95 @@
+### Chap9. 스택, 큐
+- 스택은 LIFO(Last-In-First-Out, 후입선출), 큐는 FIFO(First-In-First-Out, 선입선출)로 처리된다.
+- 파이썬은 스택 자료형을 별도로 제공하지는 않지만, 리스트가 사실상 스택의 모든 연산을 지원한다. 
+- 리스트는 큐의 모든 연산을 지원하지만 동적배열로 구현되어 있어 큐의 연산을 수행하기에는 효율적이지 않기 때문에, 큐를 위해서는 데크(Deque)라는 별도의 자료형을 사용해야 좋은성능을 기대할 수 있다.
+
+### 스택(Stack)
+- push(): 요소를 컬렉션에 추가한다.
+- pop(): 아직 제거되지 않은 가장 최근에 삽입된 요소를 제거한다.
+
+### 연결 리스트를 이용한 스택 ADT(Abstract Data Type) 구현
+(1) 리스트를 담을 Node 클래스 정의
+
+```c
+class Node:
+  def __init__(self, item, next):
+      self.item = item
+      self.next = next
+```
+- 초기화 함수 __init__() 에서 노드의 값은 item으로, 다음 노드를 가리키는 포인터는 next로 정의한다.
+
+(2) Stack 클래스
+
+```c
+class Stack:
+    def __init__(self):
+        self.last = None
+    
+    def push(self, item):
+        self.last = Node(item, self.last)
+    
+    def pop(self):
+        item = self.last.item
+        self.last = self.last.next
+        return item
+```
+
+- None <- 1 <- 2 <- 3 <- 4 <- 5 (last)
+- stack은 각각 이전 값을 가리키는 연결 리스트로 구현되어 있으며, 가장 마지막 값은 last 포인터가 가리킨다.
+
+
+### 문 20) 유효한 괄호(리트코드 20. Valid Parentheses)
+
+### My solution)
+```c
+class Solution:  
+    def toMatch(self, s:str) -> str:
+        if s == ')':
+            return '('
+        if s == '}':
+            return '{'
+        if s == ']':
+            return '['
+    
+    def isValid(self, s: str) -> bool:
+        stack = []
+        for ch in s:
+            if len(stack)!=0 and (ch ==')' or ch == ']' or ch == '}'):
+                if self.toMatch(ch) != stack[-1]:
+                    return False
+                else:
+                    stack.pop()
+            else:
+                stack.append(ch)     
+ 
+        
+        if not stack:
+            return True
+        else:
+            return False
+```
+
+### Soultion 스택 일치 여부 판별)
+
+```c
+def isValid(self, s:str) -> bool:
+    stack = []
+    table = {
+      ')' : '(',
+      '}' : '{',
+      ']' : '['
+    }
+    
+    #스택 이용 예외 처리 및 일치 여부 판별
+    
+    for char in s:
+       if char not in table:
+          stack.append(char) # (, {, [
+       elif not stack or table[char] != stack.pop():
+           return False
+       return len(stack) == 0
+```
+
+- 먼저 매핑 테이블을 만들어 놓고 테이블에 존재하지 않으면 무조건 push 하고, pop 했을 때 결과가 일치하지 않으면 False 를 리턴하도록 구현
+
 
