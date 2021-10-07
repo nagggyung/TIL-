@@ -118,4 +118,69 @@ class Solution:
 ```
 
 
+### 문22) 일일 온도 (리트코드 739. Daily Temperatures)
+
+### Solution 스택 값 비교)
+```c
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        stack = []
+        T = temperatures
+        res = [0]*len(T)
+        
+        for i, cur in enumerate(T):
+            while stack and cur > T[stack[-1]]:
+                last = stack.pop()
+                res[last] = i-last
+            
+            stack.append(i)
+        return res                     
+```
+
+- 현재의 인덱스를 계속 스택에 쌓아 두다가, 이전보다 상승하는 지점에서 현재 온도와 스택에 쌓아둔 인덱스 지점의 온도차이를 비교하여, 더 높다면 스택의 값을 pop()으로 꺼내고 현재 인덱스와 스택에 쌓아둔 인덱스의 차이를 정답으로 처리한다. 
+
+
+### 큐(Queue)
+- 시퀀스의 한쪽 끝에는 entity를 추가하고, 다른 반대쪽 끝에는 제거할 수 있는 entity collection
+- FIFO(First-In-First-Out, 선입선출) 로 처리되는, 줄을 서는 것에 비유할 수 있는 큐는 상대적으로 스택에 비해서는 쓰임새가 적다.
+- 데크(Deque), 우선순위 큐, 너비 우선 탐색, 캐시 구현 등에 사용한다.
+- 리스트는 큐의 모든 연산을 지원하지만 좀 더 나은 성능을 위해서는 양 방향 삽입, 삭제가 모두 O(1)에 가능한 데크(Deque)를 사용하는 편이 가장 좋다.
+
+
+### 문24) 스택을 이용한 큐 구현(리트코드 232. Implement Queue using Stacks)
+
+![2021-10-07 (3)](https://user-images.githubusercontent.com/74478432/136404645-29c04907-c29a-4f9a-a2ea-23a5f2959f65.png)
+
+### Solution)
+
+```c
+class MyStack:
+
+    def __init__(self):
+        self.d = collections.deque()
+        
+    def push(self, x: int) -> None:
+        self.d.append(x)
+        for _ in range(len(self.d)-1): # 요소 삽입 후 맨 앞에 두는 재 정렬!
+            self.d.append(self.d.popleft())
+
+    def pop(self) -> int:
+        return self.d.popleft()
+        
+
+    def top(self) -> int:
+        return self.d[0]
+
+    def empty(self) -> bool:
+        return len(self.d) == 0
+              
+```
+
+
+
+
+
+
+
+
 
