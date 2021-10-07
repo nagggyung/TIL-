@@ -93,3 +93,29 @@ def isValid(self, s:str) -> bool:
 - 먼저 매핑 테이블을 만들어 놓고 테이블에 존재하지 않으면 무조건 push 하고, pop 했을 때 결과가 일치하지 않으면 False 를 리턴하도록 구현
 
 
+### 문21) 중복 문자 제거(리트코드 316. Remove Duplicate Letters)
+
+### Solution 스택을 이용한 문자 제거)
+
+```c
+class Solution:
+    def removeDuplicateLetters(self, s: str) -> str:
+        counter, seen, stack = collections.Counter(s), set(), []
+        
+        for char in s:
+            counter[char] -= 1
+            
+            # 이미 처리된 문자 여부 확인 위해 사용
+            if char in seen:
+                continue
+            # 뒤에 붙일 문자가 남아있다면 스택에서 제거
+            while stack and char < stack[-1] and counter[stack[-1]] >0:
+                seen.remove(stack.pop())
+            stack.append(char)
+            seen.add(char)
+            
+        return ''.join(stack)
+```
+
+
+
