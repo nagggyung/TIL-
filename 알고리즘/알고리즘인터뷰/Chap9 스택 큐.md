@@ -190,6 +190,7 @@ class MyStack:
 - deQueue()를 하게 되면 front 포인터가 앞으로 이동
 - rear 포인터와 front 포인터가 같은 위치에서 서로 다시 만나게 된다면, 그때는 정말로 여유공간이 하나도 없다는 것을 의미
 
+### Solution)
 
 ```c
 class MyCircularQueue:
