@@ -166,4 +166,64 @@ class Solution:
 ```
 
 
+### 문31) 상위 K 빈도 요소(리트코드 347. Top K Frequent Elements)
+
+### Solution (1) Counter를 이용한 음수 순 추출)
+
+```c 
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        freqs = collections.Counter(nums)
+        freqs_heap = []
+        # 힙에 음수로 삽입
+        
+        for f in freqs:
+            heapq.heappush(freqs_heap, (-freqs[f],f))
+        
+        topk = list()
+        # k번 만틈 추출, 최소 힙이므로 가장 작은 음수 순으로 추출
+        
+        for _ in range(k):
+            topk.append(heapq.heappop(freqs_heap)[1])
+        
+        return topk
+
+```
+
+- 빈도 수를 키로 하고, freqs의 키를 값으로 했다 (즉, 키/값을 바꿔서 힙에 추가함)
+- 힙은 키 순서대로 정렬되기 때문에 이를 위해 빈도 수를 키로 한 것이다.
+- 파이썬 heapq 모듈은 최소 힙만 지원하기 때문에 값을 음수로 저장했다.
+
+
+### Solution (2) 파이썬 다운 방식)
+
+```c 
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        return list(zip(*collections.Counter(nums).most_common(k)))[0]
+
+```
+
+### zip() 함수:
+- zip 함수는 2개 이상의 시퀀스를 짧은 길이를 기준으로 일대일 대응하는 새로운 튜플 시퀀스를 만드는 역할을 한다.
+
+![2021-10-13](https://user-images.githubusercontent.com/74478432/136984252-b05bae18-a48f-40a1-9b25-af95a7e39140.png)
+
+### 아스테리스크(*):
+
+![2021-10-13 (1)](https://user-images.githubusercontent.com/74478432/136984424-70095070-2ed7-4ff6-a2e1-13c9dfdb125f.png)
+
+- 파이썬에서 '*'* 는 언팩이다. 
+- 시퀀스 언패킹 연산자로 말 그대로 시퀀스를 풀어 헤치는 연산자를 뜻하며 주로 **튜플이나 리스트**를 언패킹하는데 사용한다.
+
+![2021-10-13 (2)](https://user-images.githubusercontent.com/74478432/136984962-03cd35e4-f866-4609-83df-4991cddcf602.png)
+- (1) 언패킹 안했을 때
+- (2) 언패킹 했을 때
+
+
+ 
+
+
+
+
 
