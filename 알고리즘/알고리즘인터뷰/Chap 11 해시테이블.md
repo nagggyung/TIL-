@@ -146,3 +146,24 @@ class Solution:
 - dict('{}') 이용하여 hashmap 구현 
 
 
+### 문30) 중복 문자 없는 가장 긴 부분 문자열(리트코드 3. Longest Substring Repeating Characters)
+
+``` C
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        charSet = set()
+        l =0
+        res = 0
+        
+        for r in range(len(s)):
+            while s[r] in charSet:
+                charSet.remove(s[l])
+                l += 1
+            charSet.add(s[r])
+            res = max(res, r-l+1)
+        return res
+                
+```
+
+
+
