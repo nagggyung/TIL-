@@ -213,7 +213,7 @@ class Solution:
 
 ![2021-10-13 (1)](https://user-images.githubusercontent.com/74478432/136984424-70095070-2ed7-4ff6-a2e1-13c9dfdb125f.png)
 
-- 파이썬에서 '*'* 는 언팩이다. 
+- 파이썬에서 * 는 언팩이다. 
 - 시퀀스 언패킹 연산자로 말 그대로 시퀀스를 풀어 헤치는 연산자를 뜻하며 주로 **튜플이나 리스트**를 언패킹하는데 사용한다.
 
 ![2021-10-13 (2)](https://user-images.githubusercontent.com/74478432/136984962-03cd35e4-f866-4609-83df-4991cddcf602.png)
