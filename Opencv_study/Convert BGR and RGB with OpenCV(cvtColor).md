@@ -98,7 +98,8 @@ Image.fromarray(im_rgb).save('data/dst/lena_swap_2.jpg')
 ```
 
 
+## Reference 
 
-
+https://note.nkmk.me/en/python-opencv-bgr-rgb-cvtcolor/
 
 
