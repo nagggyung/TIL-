@@ -14,8 +14,6 @@
 
 '''
 
-
-
 def gcd(a, b):
   if a%b == 0: ## a가 b의 배수라면
     return b
@@ -23,3 +21,6 @@ def gcd(a, b):
     return gcd(b, a%b)
   
 print(gcd(192, 162))
+
+
+
