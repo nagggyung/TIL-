@@ -120,7 +120,7 @@ class MyHashMap:
 
 ```
 
-- defaultdict(ListNode) 로 선언했기 때문에 존재하지 않는 인덱스를 조회할 경우 바로 빈 ListNode 생성
+- defaultdict(ListNode) 로 선언했기 때문에 존재하지 않는 인덱스를 조회할 경우 바로 빈 ListNode 생성.
 
 
 ### 문29) 보석과 돌(리트코드 771. Jewels and Stones)
