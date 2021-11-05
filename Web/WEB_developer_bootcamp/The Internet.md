@@ -5,7 +5,7 @@
 - The Internet is the infrastructure that carries things like Email, The web, File sharing, Online gaming, Streaming services
 (To summarize, the Internet is a global network of networks, just tons and tons of different devices that are able to communicate in the Internet's really the infrastructure 
 that makes it all possible)
-- So, The Internet ? Global network of interconnected computers that communicate via TCP/IP network of networks
+- So The Internet ? Global network of interconnected computers that communicate via TCP/IP network of networks
 
 ### The Web ?
 - The Word Wide Web is an information system where documents and others resources are available over the Internet
