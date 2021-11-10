@@ -42,7 +42,7 @@ irrespective of the size of the screen.
 It is the part of the website that you cannot see and interact with. It is the portion of software that does not come in direct contact with the users. 
 The parts and characteristics developed by backend designers are indirectly accessed by users through a front-end application.
 Activities, like writing APIs, creating libraries, and working with system components without user interfaces or even systems of scientific programming, 
-are also included in the backend
+are also included in the backend.
 
 
 ### CSS VS HTML VS JS
